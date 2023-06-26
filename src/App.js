@@ -1,8 +1,20 @@
-import logo from "./logo.svg";
+import React, { Component } from "react";
+import General from "./components/General";
 import "./App.css";
 
-function App() {
-  return <div className="App"></div>;
+class App extends Component {
+  constructor() {
+    super();
+  }
+
+  render() {
+    return (
+      <div className="App">
+        <h1>CV-Project</h1>
+        <General />
+      </div>
+    );
+  }
 }
 
 export default App;
