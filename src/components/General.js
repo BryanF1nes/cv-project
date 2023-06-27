@@ -1,7 +1,23 @@
-import React, { Component } from "react";
+import React, { Component, useState } from "react";
+import SubmitButton from "../components/SubmitButton";
 import "../components/General.css";
 
 class General extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      name: "Initial State",
+    };
+    this.handleClick = this.handleClick.bind(this);
+  }
+
+  handleClick(e) {
+    this.setState({
+      name: "React State",
+    });
+    e.preventDefault();
+  }
+
   render() {
     return (
       <form className="App">
@@ -13,7 +29,8 @@ class General extends Component {
         <input type="email" id="email" placeholder="Email"></input>
         <label>Phone Number</label>
         <input type="text" id="phone" placeholder="Phone Number"></input>
-        <button>Submit</button>
+        <SubmitButton clickHandler={(e) => this.handleClick(e)} />
+        <h1>{this.state.name}</h1>
       </form>
     );
   }
