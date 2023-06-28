@@ -30,7 +30,6 @@ class General extends Component {
         <label>Phone Number</label>
         <input type="text" id="phone" placeholder="Phone Number"></input>
         <SubmitButton clickHandler={(e) => this.handleClick(e)} />
-        <h1>{this.state.name}</h1>
       </form>
     );
   }
