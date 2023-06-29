@@ -1,36 +1,79 @@
 import React, { Component, useState } from "react";
-import SubmitButton from "../components/SubmitButton";
 import "../components/General.css";
+import "../components/Button.css";
 
 class General extends Component {
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
+
     this.state = {
-      name: "Initial State",
+      firstName: "",
+      lastName: "",
+      email: "",
+      number: "",
     };
-    this.handleClick = this.handleClick.bind(this);
+
+    this.handleLogin = this.handleLogin.bind(this);
+    this.handleChange = this.handleChange.bind(this);
   }
 
-  handleClick(e) {
-    this.setState({
-      name: "React State",
-    });
+  handleChange(e) {
+    this.setState({ [e.target.name]: e.target.value });
+  }
+
+  handleLogin(e) {
     e.preventDefault();
+    console.log(this.state);
   }
 
   render() {
     return (
-      <form className="App">
-        <label>First Name</label>
-        <input type="text" id="f-name" placeholder="First-Name"></input>
-        <label>Last Name</label>
-        <input type="text" id="l-name" placeholder="Last-Name"></input>
-        <label>Email</label>
-        <input type="email" id="email" placeholder="Email"></input>
-        <label>Phone Number</label>
-        <input type="text" id="phone" placeholder="Phone Number"></input>
-        <SubmitButton clickHandler={(e) => this.handleClick(e)} />
-      </form>
+      <div>
+        <h1>General Information</h1>
+        <form className="App">
+          <label>First Name *</label>
+          <input
+            type="text"
+            id="firstName"
+            name="firstName"
+            placeholder="First-Name"
+            value={this.state.firstName}
+            onChange={this.handleChange}
+            required
+          ></input>
+          <label>Last Name *</label>
+          <input
+            type="text"
+            id="lastName"
+            name="lastName"
+            placeholder="Last-Name"
+            value={this.state.lastName}
+            onChange={this.handleChange}
+            required
+          ></input>
+          <label>Email *</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            placeholder="Email"
+            value={this.state.email}
+            onChange={this.handleChange}
+            required
+          ></input>
+          <label>Phone Number *</label>
+          <input
+            type="text"
+            id="phoneNumber"
+            name="number"
+            placeholder="Phone Number"
+            value={this.state.number}
+            onChange={this.handleChange}
+            required
+          ></input>
+          <button onClick={this.updateCount}>Submit</button>
+        </form>
+      </div>
     );
   }
 }
