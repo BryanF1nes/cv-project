@@ -32,9 +32,9 @@ class App extends Component {
     return (
       <div className="App">
         {myHeader}
-        {this.state.component === 1 && <General />}
-        {this.state.component === 2 && <Education />}
-        {this.state.component === 3 && <Experience />}
+        {this.state.component === 1 && <General onButtonClicked={this.updateCount}/>}
+        {this.state.component === 2 && <Education onButtonClicked={this.updateCount}/>}
+        {this.state.component === 3 && <Experience onButtonClicked={this.updateCount}/>}
       </div>
     );
   }
