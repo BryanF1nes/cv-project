@@ -60,7 +60,7 @@ class Education extends Component {
             onChange={this.handleChange}
             required
           ></input>
-          <button onClick={this.handleLogin}>Submit</button>
+          <button onClick={this.props.onButtonClicked}>Submit</button>
         </form>
       </div>
     );

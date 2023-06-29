@@ -3,8 +3,8 @@ import "../components/General.css";
 import "../components/Button.css";
 
 class General extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
     this.state = {
       firstName: "",
@@ -13,17 +13,11 @@ class General extends Component {
       number: "",
     };
 
-    this.handleLogin = this.handleLogin.bind(this);
     this.handleChange = this.handleChange.bind(this);
   }
 
   handleChange(e) {
     this.setState({ [e.target.name]: e.target.value });
-  }
-
-  handleLogin(e) {
-    e.preventDefault();
-    console.log(this.state);
   }
 
   render() {
@@ -71,7 +65,7 @@ class General extends Component {
             onChange={this.handleChange}
             required
           ></input>
-          <button onClick={this.updateCount}>Submit</button>
+          <button onClick={this.props.onButtonClicked}>Submit</button>
         </form>
       </div>
     );

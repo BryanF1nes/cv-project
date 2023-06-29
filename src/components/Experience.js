@@ -1,51 +1,23 @@
-import React, { Component } from "react";
-import "./General.css";
+import React, { Component, useState } from "react";
+import "../components/General.css";
+import "../components/Button.css";
 
 class Experience extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
     this.state = {
-      company: "",
-      title: "",
-      date: "",
-      lastjob: "",
+      currentJob: '',
+      position: '',
+      startDate: '',
+      lastJob: '',
     };
 
-    this.handleLogin = this.handleLogin.bind(this);
-    this.handleCompany = this.handleCompany.bind(this);
-    this.handleTitle = this.handleTitle.bind(this);
-    this.handleDate = this.handleDate.bind(this);
-    this.handleLastJob = this.handleLastJob.bind(this);
+    this.handleChange = this.handleChange.bind(this);
   }
 
-  handleCompany(e) {
-    this.setState({
-      company: e.target.value,
-    });
-  }
-
-  handleTitle(e) {
-    this.setState({
-      title: e.target.value,
-    });
-  }
-
-  handleDate(e) {
-    this.setState({
-      date: e.target.value,
-    });
-  }
-
-  handleLastJob(e) {
-    this.setState({
-      lastjob: e.target.value,
-    });
-  }
-
-  handleLogin(e) {
-    e.preventDefault();
-    console.log(this.state);
+  handleChange(e) {
+    this.setState({ [e.target.name]: e.target.value });
   }
 
   render() {
@@ -53,43 +25,47 @@ class Experience extends Component {
       <div>
         <h1>Work Experience</h1>
         <form className="App">
-          <label>Company Name</label>
+          <label>Current Job *</label>
           <input
             type="text"
-            id="company"
-            placeholder="Company Name"
-            value={this.state.compnay}
-            onChange={this.handleCompany}
+            id="currentJob"
+            name="currentJob"
+            placeholder="Current Job"
+            value={this.state.currentJob}
+            onChange={this.handleChange}
             required
           ></input>
-          <label>Position/Title</label>
+          <label>Title/Position *</label>
           <input
             type="text"
             id="position"
-            placeholder="Position-Title"
-            value={this.state.title}
-            onChange={this.handleTitle}
+            name="position"
+            placeholder="Title/Position"
+            value={this.state.position}
+            onChange={this.handleChange}
             required
           ></input>
-          <label>Date</label>
-          <input
-            type="email"
-            id="date"
-            placeholder="Date"
-            value={this.state.date}
-            onChange={this.handleDate}
-            required
-          ></input>
-          <label>Last Job</label>
+          <label>Start Date *</label>
           <input
             type="text"
-            id="last-job"
-            placeholder="Last-Job"
-            value={this.state.lastjob}
-            onChange={this.handleLastJob}
+            id="startDate"
+            name="startDate"
+            placeholder="Start Date"
+            value={this.state.startDate}
+            onChange={this.handleChange}
             required
           ></input>
-          <button onClick={this.handleLogin}>Submit</button>
+          <label>Last Job *</label>
+          <input
+            type="text"
+            id="lastJob"
+            name="lastJob"
+            placeholder="Last Job"
+            value={this.state.lastJob}
+            onChange={this.handleChange}
+            required
+          ></input>
+          <button onClick={this.props.onButtonClicked}>Submit</button>
         </form>
       </div>
     );
