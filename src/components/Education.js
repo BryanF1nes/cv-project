@@ -4,40 +4,23 @@ import "../components/General.css";
 class Education extends Component {
   constructor() {
     super();
-
-    this.state = {
-      school: "",
-      degree: "",
-      year: "",
-    };
-
-    this.handleLogin = this.handleLogin.bind(this);
-    this.handleChange = this.handleChange.bind(this);
-  }
-
-  handleChange(e) {
-    //object           //key            //value
-    this.setState({ [e.target.name]: e.target.value });
-  }
-
-  handleLogin(e) {
-    e.preventDefault();
-    console.log(this.state);
   }
 
   render() {
+    const { school, degree, year, onButtonClicked, handleChange } = this.props;
+
     return (
       <div>
         <h1>Education Experience</h1>
-        <form className="App">
+        <form className="App" onSubmit={onButtonClicked}>
           <label>School Name</label>
           <input
             type="text"
             id="school-name"
             name="school"
             placeholder="School Name"
-            value={this.state.school}
-            onChange={this.handleChange}
+            value={school}
+            onChange={handleChange}
             required
           ></input>
           <label>Degree</label>
@@ -46,8 +29,8 @@ class Education extends Component {
             id="degree"
             name="degree"
             placeholder="Degree"
-            value={this.state.degree}
-            onChange={this.handleChange}
+            value={degree}
+            onChange={handleChange}
             required
           ></input>
           <label>Year Graduated</label>
@@ -56,11 +39,11 @@ class Education extends Component {
             id="year"
             name="year"
             placeholder="Year Graduated"
-            value={this.state.year}
-            onChange={this.handleChange}
+            value={year}
+            onChange={handleChange}
             required
           ></input>
-          <button onClick={this.props.onButtonClicked}>Submit</button>
+          <button type="submit">Submit</button>
         </form>
       </div>
     );

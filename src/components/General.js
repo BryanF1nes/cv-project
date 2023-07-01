@@ -1,38 +1,34 @@
-import React, { Component, useState } from "react";
+import React, { Component } from "react";
 import "../components/General.css";
 import "../components/Button.css";
 
 class General extends Component {
   constructor(props) {
     super(props);
-
-    this.state = {
-      firstName: "",
-      lastName: "",
-      email: "",
-      number: "",
-    };
-
-    this.handleChange = this.handleChange.bind(this);
-  }
-
-  handleChange(e) {
-    this.setState({ [e.target.name]: e.target.value });
   }
 
   render() {
+    const {
+      firstName,
+      lastName,
+      email,
+      number,
+      onButtonClicked,
+      handleChange,
+    } = this.props;
+
     return (
       <div>
         <h1>General Information</h1>
-        <form className="App">
+        <form className="App" onSubmit={onButtonClicked}>
           <label>First Name *</label>
           <input
             type="text"
             id="firstName"
             name="firstName"
             placeholder="First-Name"
-            value={this.state.firstName}
-            onChange={this.handleChange}
+            value={firstName}
+            onChange={handleChange}
             required
           ></input>
           <label>Last Name *</label>
@@ -41,8 +37,8 @@ class General extends Component {
             id="lastName"
             name="lastName"
             placeholder="Last-Name"
-            value={this.state.lastName}
-            onChange={this.handleChange}
+            value={lastName}
+            onChange={handleChange}
             required
           ></input>
           <label>Email *</label>
@@ -51,8 +47,8 @@ class General extends Component {
             id="email"
             name="email"
             placeholder="Email"
-            value={this.state.email}
-            onChange={this.handleChange}
+            value={email}
+            onChange={handleChange}
             required
           ></input>
           <label>Phone Number *</label>
@@ -61,11 +57,11 @@ class General extends Component {
             id="phoneNumber"
             name="number"
             placeholder="Phone Number"
-            value={this.state.number}
-            onChange={this.handleChange}
+            value={number}
+            onChange={handleChange}
             required
           ></input>
-          <button onClick={this.props.onButtonClicked}>Submit</button>
+          <button type="submit">Submit</button>
         </form>
       </div>
     );
