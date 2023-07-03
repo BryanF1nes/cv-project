@@ -6,83 +6,77 @@ import Document from "./components/Document";
 import "./App.css";
 
 const App = () => {
-  const [componentCount, setComponentCount] = useState(1);
-  const [allValues, setAllValues] = useState({
-    // General Component State
-    firstName: "",
-    lastName: "",
-    email: "",
-    number: "",
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [email, setEmail] = useState("");
+  const [number, setNumber] = useState("");
+  const [school, setSchool] = useState("");
+  const [degree, setDegree] = useState("");
+  const [year, setYear] = useState("");
+  const [currentJob, setCurrentJob] = useState("");
+  const [position, setPosition] = useState("");
+  const [startDate, setStartDate] = useState("");
+  const [lastJob, setLastJob] = useState("");
 
-    // Education Component State
-    school: "",
-    degree: "",
-    year: "",
-
-    // Experience Component State
-    currentJob: "",
-    position: "",
-    startDate: "",
-    lastJob: "",
-  });
-
-  const handleChange = (e) => {
-    setAllValues(e.target.value);
-  };
+  const [component, setComponentCount] = useState(1);
 
   const handleSubmit = () => {
-    if (componentCount < 4) {
-      setComponentCount(componentCount + 1);
-    } else {
-      setComponentCount((componentCount = 1));
-    }
+    setComponentCount((prevComponent) => prevComponent + 1);
   };
 
   return (
     <div className="App">
       <h1>CV-Project</h1>
-      {componentCount && (
+      {component === 1 && (
         <General
           onButtonClicked={handleSubmit}
-          firstName={allValues.firstName}
-          lastName={allValues.lastName}
-          email={allValues.email}
-          number={allValues.number}
-          handleChange={handleChange}
+          firstName={firstName}
+          lastName={lastName}
+          email={email}
+          number={number}
+          handleFirstNameChange={setFirstName}
+          handleLastNameChange={setLastName}
+          handleEmailChange={setEmail}
+          handleNumberChange={setNumber}
         />
       )}
-      {componentCount === 2 && (
+      {component === 2 && (
         <Education
           onButtonClicked={handleSubmit}
-          school={allValues.school}
-          degree={allValues.degree}
-          year={allValues.year}
-          handleChange={handleChange}
+          school={school}
+          degree={degree}
+          year={year}
+          handleSchoolChange={setSchool}
+          handleDegreeChange={setDegree}
+          handleYearChange={setYear}
         />
       )}
-      {componentCount === 3 && (
+      {component === 3 && (
         <Experience
           onButtonClicked={handleSubmit}
-          currentJob={allValues.currentJob}
-          position={allValues.position}
-          startDate={allValues.startDate}
-          lastJob={allValues.lastJob}
-          handleChange={handleChange}
+          currentJob={currentJob}
+          position={position}
+          startDate={startDate}
+          lastJob={lastJob}
+          handleCurrentJobChange={setCurrentJob}
+          handlePositionChange={setPosition}
+          handleStartDateChange={setStartDate}
+          handleLastJobChange={setLastJob}
         />
       )}
-      {componentCount === 4 && (
+      {component === 4 && (
         <Document
-          firstName={allValues.firstName}
-          lastName={allValues.lastName}
-          email={allValues.email}
-          number={allValues.number}
-          school={allValues.school}
-          degree={allValues.degree}
-          year={allValues.year}
-          currentJob={allValues.currentJob}
-          position={allValues.position}
-          startDate={allValues.startDate}
-          lastJob={allValues.lastJob}
+          firstName={firstName}
+          lastName={lastName}
+          email={email}
+          number={number}
+          school={school}
+          degree={degree}
+          year={year}
+          currentJob={currentJob}
+          position={position}
+          startDate={startDate}
+          lastJob={lastJob}
         />
       )}
     </div>

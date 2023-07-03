@@ -1,7 +1,15 @@
 import React, { Component } from "react";
 import "../components/General.css";
 
-const Education = ({ school, degree, year, onButtonClicked, handleChange }) => {
+const Education = ({
+  school,
+  degree,
+  year,
+  onButtonClicked,
+  handleSchoolChange,
+  handleDegreeChange,
+  handleYearChange,
+}) => {
   return (
     <div>
       <h1>Education Experience</h1>
@@ -13,7 +21,7 @@ const Education = ({ school, degree, year, onButtonClicked, handleChange }) => {
           name="school"
           placeholder="School Name"
           value={school}
-          onChange={handleChange}
+          onChange={(e) => handleSchoolChange(e.target.value)}
           required
         ></input>
         <label>Degree</label>
@@ -23,7 +31,7 @@ const Education = ({ school, degree, year, onButtonClicked, handleChange }) => {
           name="degree"
           placeholder="Degree"
           value={degree}
-          onChange={handleChange}
+          onChange={(e) => handleDegreeChange(e.target.value)}
           required
         ></input>
         <label>Year Graduated</label>
@@ -33,7 +41,7 @@ const Education = ({ school, degree, year, onButtonClicked, handleChange }) => {
           name="year"
           placeholder="Year Graduated"
           value={year}
-          onChange={handleChange}
+          onChange={(e) => handleYearChange(e.target.value)}
           required
         ></input>
         <button type="submit">Submit</button>

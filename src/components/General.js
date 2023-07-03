@@ -8,7 +8,10 @@ const General = ({
   email,
   number,
   onButtonClicked,
-  handleChange,
+  handleFirstNameChange,
+  handleLastNameChange,
+  handleEmailChange,
+  handleNumberChange,
 }) => {
   return (
     <div>
@@ -21,7 +24,7 @@ const General = ({
           name="firstName"
           placeholder="First-Name"
           value={firstName}
-          onChange={handleChange}
+          onChange={(e) => handleFirstNameChange(e.target.value)}
           required
         ></input>
         <label>Last Name *</label>
@@ -31,7 +34,7 @@ const General = ({
           name="lastName"
           placeholder="Last-Name"
           value={lastName}
-          onChange={handleChange}
+          onChange={(e) => handleLastNameChange(e.target.value)}
           required
         ></input>
         <label>Email *</label>
@@ -41,7 +44,7 @@ const General = ({
           name="email"
           placeholder="Email"
           value={email}
-          onChange={handleChange}
+          onChange={(e) => handleEmailChange(e.target.value)}
           required
         ></input>
         <label>Phone Number *</label>
@@ -51,7 +54,7 @@ const General = ({
           name="number"
           placeholder="Phone Number"
           value={number}
-          onChange={handleChange}
+          onChange={(e) => handleNumberChange(e.target.value)}
           required
         ></input>
         <button type="submit">Submit</button>

@@ -1,4 +1,4 @@
-import React, { Component, useState } from "react";
+import React, { Component } from "react";
 import "../components/General.css";
 import "../components/Button.css";
 
@@ -8,7 +8,10 @@ const Experience = ({
   startDate,
   lastJob,
   onButtonClicked,
-  handleChange,
+  handleCurrentJobChange,
+  handlePositionChange,
+  handleStartDateChange,
+  handleLastJobChange,
 }) => {
   return (
     <div>
@@ -21,7 +24,7 @@ const Experience = ({
           name="currentJob"
           placeholder="Current Job"
           value={currentJob}
-          onChange={handleChange}
+          onChange={(e) => handleCurrentJobChange(e.target.value)}
           required
         ></input>
         <label>Title/Position *</label>
@@ -31,7 +34,7 @@ const Experience = ({
           name="position"
           placeholder="Title/Position"
           value={position}
-          onChange={handleChange}
+          onChange={(e) => handlePositionChange(e.target.value)}
           required
         ></input>
         <label>Start Date *</label>
@@ -41,7 +44,7 @@ const Experience = ({
           name="startDate"
           placeholder="Start Date"
           value={startDate}
-          onChange={handleChange}
+          onChange={(e) => handleStartDateChange(e.target.value)}
           required
         ></input>
         <label>Last Job *</label>
@@ -51,7 +54,7 @@ const Experience = ({
           name="lastJob"
           placeholder="Last Job"
           value={lastJob}
-          onChange={handleChange}
+          onChange={(e) => handleLastJobChange(e.target.value)}
           required
         ></input>
         <button type="submit">Submit</button>
